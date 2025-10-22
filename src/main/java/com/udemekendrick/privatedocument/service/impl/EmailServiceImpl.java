@@ -10,6 +10,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import static com.udemekendrick.privatedocument.utils.EmailUtils.getEmailMessage;
+import static com.udemekendrick.privatedocument.utils.EmailUtils.getResetPasswordMessage;
+
 /**
  * Author: Udeme Kendrick
  *
@@ -55,7 +58,7 @@ public class EmailServiceImpl implements EmailService {
             message.setSubject(PASSWORD_RESET_REQUEST);
             message.setFrom(fromEmail);
             message.setTo(email);
-            message.setText(getEmailMessage(name, host, token));
+            message.setText(getResetPasswordMessage(name, host, token));
             sender.send(message);
         } catch (Exception exception){
             log.error(exception.getMessage());

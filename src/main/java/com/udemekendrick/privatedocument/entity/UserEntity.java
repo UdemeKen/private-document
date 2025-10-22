@@ -40,13 +40,13 @@ public class UserEntity extends Auditable{
     private String phone;
     private String bio;
     private String imageUrl;
-    private boolean accountNonExpired;
-    private boolean accountNonLocked;
-    private boolean enabled;
-    private boolean mfa;
+    private Boolean accountNonExpired;
+    private Boolean accountNonLocked;
+    private Boolean enabled;
+    private Boolean mfa;
     @JsonIgnore
     private String qrCodeSecret;
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "text")
     private String qrCodeImageUri;
     @ManyToOne
     @JoinTable(

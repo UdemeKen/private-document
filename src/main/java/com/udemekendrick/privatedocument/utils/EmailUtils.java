@@ -11,11 +11,24 @@ package com.udemekendrick.privatedocument.utils;
  */
 public class EmailUtils {
     public static String getEmailMessage(String name, String host, String token) {
-        return "Hello " + name + ", \n\nYour new account has been created. PLease click on the link below to very your account.\n\n" +
+        return "Hello " + name + ", \n\nYour new account has been created. Please click on the link below to verify your account.\n\n" +
                 getVerificationUrl(host,token) + "\n\nThe Support Team";
+    }
+
+    public static String getResetPasswordMessage(String name, String host, String token) {
+        return "We received a request to reset your password. " +
+            "If you made this request, please click the link below to reset your password:\n\n" +
+            getResetPasswordUrl(host, token) + token + "\n\n" +
+            "If you did not request a password reset, please ignore this message. " +
+            "Your account will remain secure.\n\n" +
+            "Best regards,\n" +
+            "The Support Team";
     }
 
     private static String getVerificationUrl(String host, String token) {
         return host + "/verify/account?token=" + token;
+    }
+    private static String getResetPasswordUrl(String host, String token) {
+        return host + "verify/password?token=" + token;
     }
 }
